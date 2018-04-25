@@ -1,121 +1,79 @@
 /*:
- ## Closures
+ ## Classes and structures
  
- A closure is an executable block that can be passed around.
+ Classes and structures allow you to create your own types.
  
- Here is an example with the `sort` function that takes a closure returning an order
- */
-var numbers = [4, 2, 98, -76, 0, 5]
-numbers.sort(by: { (integer1: Int, integer2: Int) -> Bool in
-    return integer1 < integer2
-})
-/*:
- The syntax can be greatly simplified, as you can see in the following steps.
+ They both can:
+ - Define properties to store values
+ - Define methods to provide functionality
+ - Define initializers to set up their initial state
  
- Parenthesis around parameters can be omitted. Parameters types can be inferred.
+ Here is the Counter class example:
  */
-numbers.sort(by: { integer1, integer2 -> Bool in
-    return integer1 < integer2
-})
-/*:
- Return type can be inferred too.
- */
-numbers.sort(by: { integer1, integer2 in
-    return integer1 < integer2
-})
-/*:
- The `return` keyword can be ommited too.
- */
-numbers.sort(by: { integer1, integer2 in
-    integer1 < integer2
-})
-/*:
- You do not even have to name parameters, you can juste use the special syntax `$` followed by the parameter index, starting at `0`.
- */
-numbers.sort(by: { $0 < $1 })
-/*:
- Finally, you can _sometimes_ pass the function as a closure.
- */
-numbers.sort(by: <)
-/*:
- ### Trailing closure
- 
- You can pass a closure as a function parameter.
- */
-func trailingClosureExample(closure: (String) -> Int) {
-    let integer = closure("leboncoin")
-    print(integer)
-}
-/*:
- Here is how you call this function.
- */
-trailingClosureExample(closure: { string in
-    return string.count
-})
-/*:
- The syntax can be nicely simplified.
- */
-trailingClosureExample { string in
-    return string.count
-}
-/*:
- We can also write our `sort` method with the trailing closure syntax.
- */
-numbers.sort {
-    $0 < $1
-}
-// ----------------------
-// Classes and Structures
-// ----------------------
-
-// Structures
-// ----------
-
-struct SomeStructure {
+class Counter {
+    var count = 0
     
+    func increment(by amount: Int = 1) {
+        count += amount
+    }
+    
+    func reset() {
+        count = 0
+    }
 }
-
+/*:
+ Initialization
+ */
+let counter = Counter()
+/*:
+ Call methods
+ */
+counter.increment()
+/*:
+ Access properties
+ */
+counter.count
+//:
+counter.reset()
+counter.increment(by: 10)
+counter.count
+/*:
+ Classes are reference types
+ */
+let anotherCounter = counter
+anotherCounter.increment(by: 20)
+anotherCounter.count
+counter.count
+/*:
+ Here is a User structure example:
+ */
 import Foundation
-
-// Define properties to store values (stored properties)
-// Define methods to provide functionality
-struct Point {
-    let x: Double
-    let y: Double
+struct User {
+    let firstName: String
+    let lastName: String
+    let birthday: Date
     
-    func distance(to point: Point) -> Double {
-        return sqrt(pow(point.x - x, 2) + pow(point.y - y, 2))
+    var age: Int {
+        return Calendar.current.dateComponents([.year], from: birthday, to: Date()).year!
+    }
+    
+    var description: String {
+        return "\(firstName) \(lastName), \(age) years old."
     }
 }
-
-// Memberwise initializer
-let pointA = Point(x: 1, y: 2)
-
-// Accessing properties
-pointA.x
-
-// Structures are value types
-struct Entity {
-    var value: Int
+/*:
+ Structures have default initializers
+ */
+let birthday = DateComponents(calendar: .current, year: 1987, month: 5, day: 10).date!
+let user = User(firstName: "Antoine", lastName: "DAUGUET", birthday: birthday)
+/*:
+ Access computed properties
+ */
+user.description
+/*:
+ Example of usage
+ */
+func helloMessage(user: User) -> String {
+    return "Hello, \(user.firstName)!"
 }
-var entity1 = Entity(value: 1)
-let entity2 = entity1
-entity1.value = 2
-entity1.value
-entity2.value
-
-let pointB = Point(x: 2, y: 3)
-pointA.distance(to: pointB)
-
-// Computed properties
-struct Vector {
-    let from: Point
-    let to: Point
-    
-    var norm: Double {
-        return from.distance(to: to)
-    }
-}
-
-let vectorA = Vector(from: pointA, to: pointB)
-vectorA.norm
+helloMessage(user: user)

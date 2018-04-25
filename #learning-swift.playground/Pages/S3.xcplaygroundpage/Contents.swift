@@ -154,6 +154,7 @@ func goodbye(name: String = "stranger") -> String {
     return "Goodbye, \(name)!"
 }
 goodbye()
+goodbye(name: "François")
 /*:
  A function has a type made of its signature.
  
