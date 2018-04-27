@@ -1,4 +1,48 @@
 /*:
+ 
+ ## Inheritance
+ 
+ Inheritance allow a given class to inherit properties and methods from another. The class that inherits is called the **subclass**, the class it inherits from is called the **superclass**. "Inheritance is a fundamental behavior that differentiates classes from other types in Swift."
+ 
+ Here is an example:
+ 
+ */
+class Pet {
+    let name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func makeNoise() -> String {
+        return ""
+    }
+}
+/*:
+ 
+ The `Dog` class inherits from the `Animal` class.
+ We can override the superclass behavior.
+ 
+ */
+class Dog: Pet {
+    override func makeNoise() -> String {
+        return "Ouaf"
+    }
+}
+/*:
+ 
+ Here we are instantiating a `Dog` type by using the `Animal` initializer.
+
+ */
+let dog = Dog(name: "Médor")
+dog.makeNoise() // "Ouaf"
+/*:
+ 
+ ## Extensions
+ 
+ */
+/*:
+ 
  ## Closures
  
  A closure is an executable block that can be passed around.

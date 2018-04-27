@@ -1,20 +1,25 @@
 import Foundation
 
-// The square function
-func square(_ integer: Int) -> Int {
-    return integer * integer
-}
-square(2)
+/*:
+ 
+ ## \# 1
 
-// Compute initials
+ Implement the square function.
+ 
+ */
+func square(_ integer: Int) -> Int {
+    // Replace the body by your implementation
+    return 0
+}
+/*
+ 
+ ## \# 2
+ 
+ Implement the following `initials` function.
+ 
+ */
 func initials(firstName: String, lastName: String) -> String {
     var result = ""
-    if let first = firstName.first {
-        result += "\(first)."
-    }
-    if let last = lastName.first {
-        result += "\(last)."
-    }
+    // Your implementation here
     return result
 }
-initials(firstName: "Antoine", lastName: "DAUGUET")

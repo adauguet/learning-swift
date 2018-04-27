@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' display-mode='rendered' executeOnSourceChanges='false'>
+<playground version='6.0' target-platform='ios' display-mode='raw' executeOnSourceChanges='false'>
     <pages>
         <page name='S1'/>
         <page name='S2'/>
@@ -9,5 +9,6 @@
         <page name='S4'/>
         <page name='S4 Exercices'/>
         <page name='S5'/>
+        <page name='S5 Exercices'/>
     </pages>
 </playground>
