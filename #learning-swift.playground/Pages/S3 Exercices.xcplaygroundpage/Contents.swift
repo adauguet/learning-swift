@@ -11,7 +11,7 @@ func square(_ integer: Int) -> Int {
     // Replace the body by your implementation
     return 0
 }
-/*
+/*:
  
  ## \# 2
  
