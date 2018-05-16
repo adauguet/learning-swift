@@ -7,8 +7,11 @@ import Foundation
  
  */
 func power(_ number: Double, _ power: Int) -> Double {
-    // Replace the body by your implementation
-    return 0
+    var result: Double = 1
+    for _ in 0..<power {
+        result = result * number
+    }
+    return result
 }
 /*:
  
@@ -66,9 +69,12 @@ pow(2, 3) == 8
  
  */
 func newMessages(count: Int? = nil) -> String {
-    // Replace the body by your implementation
-    return ""
+    guard let count = count else {
+        return "You do not have any new messages."
+    }
+    return "You have \(count) new message(s)."
 }
+newMessages(count: 1)
 newMessages(count: 1) == "You have 1 new message(s)."
 newMessages() == "You do not have any new messages."
 newMessages(count: 3) == "You have 3 new message(s)."

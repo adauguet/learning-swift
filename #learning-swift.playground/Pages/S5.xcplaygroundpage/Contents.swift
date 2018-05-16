@@ -38,11 +38,6 @@ let dog = Dog(name: "Médor")
 dog.makeNoise() // "Ouaf"
 /*:
  
- ## Extensions
- 
- */
-/*:
- 
  ## Closures
  
  A closure is an executable block that can be passed around.
