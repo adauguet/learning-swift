@@ -20,7 +20,7 @@ class Pet {
 }
 /*:
  
- The `Dog` class inherits from the `Animal` class.
+ The `Dog` class inherits from the `Pet` class.
  We can override the superclass behavior.
  
  */
@@ -31,7 +31,7 @@ class Dog: Pet {
 }
 /*:
  
- Here we are instantiating a `Dog` type by using the `Animal` initializer.
+ Here we are instantiating a `Dog` type by using the `Pet` initializer.
 
  */
 let dog = Dog(name: "Médor")
